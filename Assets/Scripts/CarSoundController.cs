@@ -22,7 +22,7 @@ public class CarSoundController : MonoBehaviour
     }
 
     private void EngineSound() {
-        _pitchFromCar = Mathf.Clamp(currentSpeed, 0, 0.75f);
+        _pitchFromCar = Mathf.Clamp(currentSpeed, 0, 0.5f);
 
         if (currentSpeed <= _minSpeed)
             _engineSound.pitch = _minPitch;
