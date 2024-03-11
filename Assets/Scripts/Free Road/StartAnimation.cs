@@ -1,6 +1,7 @@
 using RootMotion;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
 public class StartAnimation : MonoBehaviour
@@ -11,15 +12,20 @@ public class StartAnimation : MonoBehaviour
     [SerializeField] private GameObject _carLight;
 
     [SerializeField] private Animator _curtainsAnimator;
+    [SerializeField] private Animator _spotifyAnimator;
 
     [SerializeField] private CarControl _carControl;
     [SerializeField] private WheelControl[] _wheelControls;
+
+    [SerializeField] private GameObject _directionalLight;
 
     private void Start() {
         StartCoroutine(Animation());
     }
 
     private IEnumerator Animation() {
+        _directionalLight.transform.rotation = Quaternion.Euler(new Vector3(-70.45f, 189.08f, -129.8f));
+
         _panel.color = Color.black;
 
         Vector3 cameraStartPosition = new Vector3(47.9f, 49.9f, -83.06f);
@@ -298,5 +304,28 @@ public class StartAnimation : MonoBehaviour
             cameraPosition7,
             Quaternion.Euler(cameraRotation7)
             );
+
+        _spotifyAnimator.SetTrigger("Show");
+        StartCoroutine(LightAnimation());
+    }
+
+    private IEnumerator LightAnimation() {
+        Vector3 startEulerAngles = new Vector3(-70.45f, 189.08f, -129.8f);
+        Quaternion startQuaternion = Quaternion.Euler(startEulerAngles);
+
+        Vector3 destinyEulerAngles = new Vector3(47.46f, 99.29f, -7.64f);
+        Quaternion destinyQuaternion = Quaternion.Euler(destinyEulerAngles);
+
+        for (float s = 0; s <= 10; s += Time.deltaTime) {
+            float t = s / 10;
+
+            _directionalLight.transform.rotation = Quaternion.Slerp(
+                startQuaternion,
+                destinyQuaternion,
+                t
+                );
+
+            yield return null;
+        }
     }
 }
