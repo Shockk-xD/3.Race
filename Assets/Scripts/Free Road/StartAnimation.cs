@@ -2,6 +2,7 @@ using RootMotion;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StartAnimation : MonoBehaviour
@@ -15,7 +16,7 @@ public class StartAnimation : MonoBehaviour
     [SerializeField] private Animator _spotifyAnimator;
 
     [SerializeField] private CarControl _carControl;
-    [SerializeField] private WheelControl[] _wheelControls;
+    //[SerializeField] private WheelControl[] _wheelControls;
 
     [SerializeField] private GameObject _directionalLight;
 
@@ -291,9 +292,9 @@ public class StartAnimation : MonoBehaviour
 
 
         _curtainsAnimator.SetTrigger("Off");
-        for (int i = 0; i < _wheelControls.Length; i++) {
+        /*for (int i = 0; i < _wheelControls.Length; i++) {
             _wheelControls[i].enabled = true;
-        }
+        }*/
         _carControl.enabled = true;
         _car.GetComponent<Rigidbody>().isKinematic = false;
         _mainCamera.GetComponent<CameraController>().enabled = true;
@@ -307,6 +308,23 @@ public class StartAnimation : MonoBehaviour
 
         _spotifyAnimator.SetTrigger("Show");
         StartCoroutine(LightAnimation());
+        Invoke(nameof(EnableEndAnimation), 257f - Time.time - 10f);
+    }
+
+    private void EnableEndAnimation() {
+        StartCoroutine(EndAnimation());
+    }
+
+    private IEnumerator EndAnimation() {
+        for (float s = 0; s < 10f; s += Time.deltaTime) {
+            float t = s / 10f;
+
+            _panel.color = Color.Lerp(new Color(0, 0, 0, 0), Color.black, t);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(0);
     }
 
     private IEnumerator LightAnimation() {
