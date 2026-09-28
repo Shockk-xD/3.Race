@@ -10,7 +10,7 @@
 
 ## About
 
-Что-то похожее на игру, чем-то похожий на жанр "гонки"
+It's somewhat like a game, and in some ways resembles the “racing” genre
 
 ## Distribute
 
