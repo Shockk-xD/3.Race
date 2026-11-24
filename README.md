@@ -19,9 +19,9 @@ It's somewhat like a game, and in some ways resembles the “racing” genre
 ## Screenshots
 
 <p>
-      <img src="https://i.ibb.co/thHq37G/Screenshot-1.png" alt="Screenshot 1">
-      <img src="https://i.ibb.co/VtyKf3Q/Screenshot-2.png" alt="Screenshot 2">
-      <img src="https://i.ibb.co/cwtfrT8/Screenshot-3.png" alt="Screenshot 3">
-      <img src="https://i.ibb.co/GVXFtQz/Screenshot-4.png" alt="Screenshot-4">
-      <img src="https://i.ibb.co/41n1zvr/Screenshot-5.png" alt="Screenshot-5">
+      <img src="docs/screenshots/01.png" alt="Screenshot 1">
+      <img src="docs/screenshots/02.png" alt="Screenshot 2">
+      <img src="docs/screenshots/03.png" alt="Screenshot 3">
+      <img src="docs/screenshots/04.png" alt="Screenshot-4">
+      <img src="docs/screenshots/05.png" alt="Screenshot-5">
 </p>
